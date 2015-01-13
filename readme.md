@@ -1,7 +1,8 @@
 # Mapping Guidelines for CB-NL
-*** Rinke Hoekstra ***  
+***Rinke Hoekstra***  
 January 2015  
 **STATUS**: Working Draft, comments to <rinke.hoekstra@vu.nl>
+**License**: Creative Commons Attribution 3.0 (CC BY 3.0)
 
 
 ## Introduction
@@ -453,7 +454,7 @@ The SKOS mapping relations are the following:
 These mapping relations are intended to hold between concepts in **different** `skos:ConceptScheme`s.
 
 
-##### Situation 10
+##### Situation 11
 An interesting way of mapping thesauri to ontologies is by pretending that the `skos:Concept` instances are classes, and vice versa, that the classes in the ontology are instances (through **punning**). One can then use both `owl:equivalentClass` and `rdfs:subClassOf` relations, and the SKOS mapping relations (in this case `skos:exactMatch` and `skos:broadMatch`) to specify the mappings between the two knowledge bases.
 
 The advantage is that from both perspectives (SKOS and RDFS/OWL) the mappings will be valid: the SKOS thesaurus will look like an extremely lightweight ontology, while the ontology will appear to be an under-specified SKOS thesaurus.
@@ -462,7 +463,7 @@ The only problem is that there is no mechanical means to check consistency of th
 
 **NOTE** An ugly hack, that takes us outside the OWL2 semantics (and the intended semantics for SKOS) would be to specify `skos:broadMatch` and `skos:broader` as equivalent property of `rdfs:subClassOf`, and `skos:exactMatch` as equivalent to `owl:equivalentClass`. Don't try this at home! 
 
-##### Situation 11
+##### Situation 12
 A more puristic approach is to consider that the purpose of the SKOS thesaurus is to annotate resources: SKOS concepts form part of a description, rather than a definition of a resource. 
 
 Suppose we have a corpus of resources annotated using a known annotation property, such as `dcterms:subject`, we can then determine the class of the annotated resources by introducing value restrictions from thesaurus `a` on this property for classes in the ontology `b`:
@@ -497,19 +498,19 @@ These mapping relations are intended to hold between concepts in **different** `
 
 The advised mapping type is **b**, using terms from the SKOS ontology.
 
-##### Situation 12
+##### Situation 13
 Simply using the SKOS relation often suffices if the task that is intended to be supported by the mappings one that is similar to browsing or searching. Simple SPARQL queries can be used to find related resources annotated using the other thesaurus. 
 
 The drawback is that these SPARQL queries do not form part of the knowledge base. However, since SKOS is widely used, the queries are not likely to differ very much from one application to another, giving little room for alternative interpretations.
 
-##### Situation 13
+##### Situation 14
 Another approach is to use the RDFS/OWL reasoning machinery to specify that two SKOS concepts are the same. The `owl:sameAs` relation comes to mind, and can indeed be used to make two concepts formally identical. 
 
 The drawback of this approach is that *everything* said about one concept will now also be said about the other (including authorship, what scheme it belongs to etc.). To make matters worse, this is works *transitively*, propagating the identicity through all mapped thesauri and ontologies. 
 
 SKOS mappings were explicitly defined to circumvent these drawbacks: situation #13 is indeed the most unfortunate one.
 
-##### Situation 14 
+##### Situation 15 
 Finally, one could use the same approach as iterated for situation #11: map SKOS thesauri by reference to the resources they are annotated with. 
 
 For instance:
@@ -541,7 +542,7 @@ A drawback of this approach is that the mappings only 'fire' when not only the s
 
 This document briefly introduces the concepts underlying the languages RDF, RDFS and OWL2, and the SKOS vocabulary. It distinguishes between expressive ontologies, vocabularies and thesauri.
 
-We then discuss 14 situations where alternative approaches could be used to specify the mappings. For each of these, we tried to list the drawbacks.
+We then discuss 15 situations where alternative approaches could be used to specify the mappings. For each of these, we tried to list the drawbacks.
 
 This is a **working document**. Please send comments, remarks, requests for additions to Rinke Hoekstra <rinke.hoekstra@vu.nl>. We'll try to accomodate them.
 
