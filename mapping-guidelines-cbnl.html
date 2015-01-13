@@ -1,0 +1,924 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<style>
+body {
+  font-family: Helvetica, arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background-color: white;
+  padding: 30px; }
+
+body > *:first-child {
+  margin-top: 0 !important; }
+body > *:last-child {
+  margin-bottom: 0 !important; }
+
+a {
+  color: #4183C4; }
+a.absent {
+  color: #cc0000; }
+a.anchor {
+  display: block;
+  padding-left: 30px;
+  margin-left: -30px;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0; }
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 20px 0 10px;
+  padding: 0;
+  font-weight: bold;
+  -webkit-font-smoothing: antialiased;
+  cursor: text;
+  position: relative; }
+
+h1:hover a.anchor, h2:hover a.anchor, h3:hover a.anchor, h4:hover a.anchor, h5:hover a.anchor, h6:hover a.anchor {
+  background: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAA09pVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMy1jMDExIDY2LjE0NTY2MSwgMjAxMi8wMi8wNi0xNDo1NjoyNyAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNiAoMTMuMCAyMDEyMDMwNS5tLjQxNSAyMDEyLzAzLzA1OjIxOjAwOjAwKSAgKE1hY2ludG9zaCkiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OUM2NjlDQjI4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OUM2NjlDQjM4ODBGMTFFMTg1ODlEODNERDJBRjUwQTQiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo5QzY2OUNCMDg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo5QzY2OUNCMTg4MEYxMUUxODU4OUQ4M0REMkFGNTBBNCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PsQhXeAAAABfSURBVHjaYvz//z8DJYCRUgMYQAbAMBQIAvEqkBQWXI6sHqwHiwG70TTBxGaiWwjCTGgOUgJiF1J8wMRAIUA34B4Q76HUBelAfJYSA0CuMIEaRP8wGIkGMA54bgQIMACAmkXJi0hKJQAAAABJRU5ErkJggg==) no-repeat 10px center;
+  text-decoration: none; }
+
+h1 tt, h1 code {
+  font-size: inherit; }
+
+h2 tt, h2 code {
+  font-size: inherit; }
+
+h3 tt, h3 code {
+  font-size: inherit; }
+
+h4 tt, h4 code {
+  font-size: inherit; }
+
+h5 tt, h5 code {
+  font-size: inherit; }
+
+h6 tt, h6 code {
+  font-size: inherit; }
+
+h1 {
+  font-size: 28px;
+  color: black; }
+
+h2 {
+  font-size: 24px;
+  border-bottom: 1px solid #cccccc;
+  color: black; }
+
+h3 {
+  font-size: 18px; }
+
+h4 {
+  font-size: 16px; }
+
+h5 {
+  font-size: 14px; }
+
+h6 {
+  color: #777777;
+  font-size: 14px; }
+
+p, blockquote, ul, ol, dl, li, table, pre {
+  margin: 15px 0; }
+
+hr {
+  background: transparent url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAYAAAAECAYAAACtBE5DAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyJpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuMC1jMDYwIDYxLjEzNDc3NywgMjAxMC8wMi8xMi0xNzozMjowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENTNSBNYWNpbnRvc2giIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6OENDRjNBN0E2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6OENDRjNBN0I2NTZBMTFFMEI3QjRBODM4NzJDMjlGNDgiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDo4Q0NGM0E3ODY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDo4Q0NGM0E3OTY1NkExMUUwQjdCNEE4Mzg3MkMyOUY0OCIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PqqezsUAAAAfSURBVHjaYmRABcYwBiM2QSA4y4hNEKYDQxAEAAIMAHNGAzhkPOlYAAAAAElFTkSuQmCC) repeat-x 0 0;
+  border: 0 none;
+  color: #cccccc;
+  height: 4px;
+  padding: 0;
+}
+
+body > h2:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+body > h1:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+  body > h1:first-child + h2 {
+    margin-top: 0;
+    padding-top: 0; }
+body > h3:first-child, body > h4:first-child, body > h5:first-child, body > h6:first-child {
+  margin-top: 0;
+  padding-top: 0; }
+
+a:first-child h1, a:first-child h2, a:first-child h3, a:first-child h4, a:first-child h5, a:first-child h6 {
+  margin-top: 0;
+  padding-top: 0; }
+
+h1 p, h2 p, h3 p, h4 p, h5 p, h6 p {
+  margin-top: 0; }
+
+li p.first {
+  display: inline-block; }
+li {
+  margin: 0; }
+ul, ol {
+  padding-left: 30px; }
+
+ul :first-child, ol :first-child {
+  margin-top: 0; }
+
+dl {
+  padding: 0; }
+  dl dt {
+    font-size: 14px;
+    font-weight: bold;
+    font-style: italic;
+    padding: 0;
+    margin: 15px 0 5px; }
+    dl dt:first-child {
+      padding: 0; }
+    dl dt > :first-child {
+      margin-top: 0; }
+    dl dt > :last-child {
+      margin-bottom: 0; }
+  dl dd {
+    margin: 0 0 15px;
+    padding: 0 15px; }
+    dl dd > :first-child {
+      margin-top: 0; }
+    dl dd > :last-child {
+      margin-bottom: 0; }
+
+blockquote {
+  border-left: 4px solid #dddddd;
+  padding: 0 15px;
+  color: #777777; }
+  blockquote > :first-child {
+    margin-top: 0; }
+  blockquote > :last-child {
+    margin-bottom: 0; }
+
+table {
+  padding: 0;border-collapse: collapse; }
+  table tr {
+    border-top: 1px solid #cccccc;
+    background-color: white;
+    margin: 0;
+    padding: 0; }
+    table tr:nth-child(2n) {
+      background-color: #f8f8f8; }
+    table tr th {
+      font-weight: bold;
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr td {
+      border: 1px solid #cccccc;
+      margin: 0;
+      padding: 6px 13px; }
+    table tr th :first-child, table tr td :first-child {
+      margin-top: 0; }
+    table tr th :last-child, table tr td :last-child {
+      margin-bottom: 0; }
+
+img {
+  max-width: 100%; }
+
+span.frame {
+  display: block;
+  overflow: hidden; }
+  span.frame > span {
+    border: 1px solid #dddddd;
+    display: block;
+    float: left;
+    overflow: hidden;
+    margin: 13px 0 0;
+    padding: 7px;
+    width: auto; }
+  span.frame span img {
+    display: block;
+    float: left; }
+  span.frame span span {
+    clear: both;
+    color: #333333;
+    display: block;
+    padding: 5px 0 0; }
+span.align-center {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-center > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: center; }
+  span.align-center span img {
+    margin: 0 auto;
+    text-align: center; }
+span.align-right {
+  display: block;
+  overflow: hidden;
+  clear: both; }
+  span.align-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px 0 0;
+    text-align: right; }
+  span.align-right span img {
+    margin: 0;
+    text-align: right; }
+span.float-left {
+  display: block;
+  margin-right: 13px;
+  overflow: hidden;
+  float: left; }
+  span.float-left span {
+    margin: 13px 0 0; }
+span.float-right {
+  display: block;
+  margin-left: 13px;
+  overflow: hidden;
+  float: right; }
+  span.float-right > span {
+    display: block;
+    overflow: hidden;
+    margin: 13px auto 0;
+    text-align: right; }
+
+code, tt {
+  margin: 0 2px;
+  padding: 0 5px;
+  white-space: nowrap;
+  border: 1px solid #eaeaea;
+  background-color: #f8f8f8;
+  border-radius: 3px; }
+
+pre code {
+  margin: 0;
+  padding: 0;
+  white-space: pre;
+  border: none;
+  background: transparent; }
+
+.highlight pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+
+pre {
+  background-color: #f8f8f8;
+  border: 1px solid #cccccc;
+  font-size: 13px;
+  line-height: 19px;
+  overflow: auto;
+  padding: 6px 10px;
+  border-radius: 3px; }
+  pre code, pre tt {
+    background-color: transparent;
+    border: none; }
+
+sup {
+    font-size: 0.83em;
+    vertical-align: super;
+    line-height: 0;
+}
+* {
+	-webkit-print-color-adjust: exact;
+}
+@media screen and (min-width: 914px) {
+    body {
+        width: 854px;
+        margin:0 auto;
+    }
+}
+@media print {
+	table, pre {
+		page-break-inside: avoid;
+	}
+	pre {
+		word-wrap: break-word;
+	}
+}
+</style>
+<title>Mapping Guidelines for CB-NL</title>
+
+</head>
+<body>
+<h1>Mapping Guidelines for CB-NL</h1>
+
+<p><strong><em>Rinke Hoekstra</em></strong><br/>
+January 2015<br/>
+<strong>STATUS</strong>: Working Draft, comments to <a href="&#x6d;&#x61;&#x69;&#x6c;&#116;&#x6f;&#x3a;&#x72;&#x69;&#110;&#x6b;&#101;&#x2e;&#x68;&#111;&#101;&#x6b;&#115;&#x74;&#x72;&#97;&#64;&#x76;&#117;&#x2e;&#110;&#x6c;">&#114;&#105;&#x6e;&#x6b;&#101;&#46;&#104;&#x6f;&#x65;&#107;&#115;&#116;&#x72;&#97;&#x40;&#x76;&#117;&#46;&#110;&#108;</a><br/>
+<strong>License</strong>: Creative Commons Attribution 3.0 (CC BY 3.0)</p>
+
+<h2>Introduction</h2>
+
+<p>Defining mappings between Linked Data datasets can be tricky because of three reasons:</p>
+
+<ol>
+<li>Linked Data data can be expressed at varying levels of <strong>expressiveness</strong> (plain RDF, SKOS, RDFS, OWL2)</li>
+<li>Mappings can be expressed at varying levels of <strong>expressiveness</strong> (using SKOS, or RDF/RDFS/OWL2)</li>
+<li>A distinction needs to be made between <strong>instance</strong> mapping and <strong>schema</strong> mapping</li>
+</ol>
+
+
+<p>This document briefly discusses the caveats and tradeoffs when dealing with these characteristics of Linked Data.<sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup></p>
+
+<h2>Languages vs. vocabularies and ontologies, and vocabularies</h2>
+
+<h4>Languages</h4>
+
+<p>The languages underlying the Linked Data cloud, RDF, RDFS and OWL2, together form a family of so-called <strong>knowledge representation</strong> languages. Like any language, knowledge representation languages have:</p>
+
+<ol>
+<li>a <strong>vocabulary</strong>, the `words' of the language,</li>
+<li>a <strong>grammar</strong>, the allowed combinations of the words when forming sentences, and</li>
+<li>a <strong>semantics</strong>, the meaning of these combinations of words in sentences.</li>
+<li>a <strong>syntax</strong>, the rules for writing the sentences down (e.g. interpunction)</li>
+</ol>
+
+
+<p>Here are some examples:</p>
+
+<table>
+<thead>
+<tr>
+<th> Language </th>
+<th> Vocabulary </th>
+<th align="center"> Grammar </th>
+<th> Semantics </th>
+<th> Syntax </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td> RDF </td>
+<td> <code>rdf:type</code>, <code>rdf:Property</code> </td>
+<td align="center"> directed labeled graph </td>
+<td> if <code>&lt;s,p,o&gt;</code> then <code>&lt;p,rdf:type,rdf:Property&gt;</code> </td>
+<td> Turtle, RDF/XML, JSON-LD, N-Triples, etc. but also URI's/IRI's</td>
+</tr>
+<tr>
+<td> RDFS </td>
+<td> <code>rdfs:subClassOf</code>, <code>rdfs:domain</code></td>
+<td align="center"> directed labeled graph </td>
+<td> if <code>&lt;p,rdfs:domain,C&gt;</code> and <code>&lt;s,p,o&gt;</code> then <code>&lt;s,rdf:type,C&gt;</code><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> </td>
+<td> any RDF syntax</td>
+</tr>
+<tr>
+<td> OWL2 </td>
+<td> <code>owl:Class</code>, <code>owl:equivalentClass</code> </td>
+<td align="center"> Structural Specification (DL) and directed labeled graph (Full) <sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> </td>
+<td> iff <code>&lt;A,rdfs:subClassOf,B&gt;</code> and <code>&lt;A,rdfs:subClassOf,B&gt;</code> then <code>&lt;A,owl:equivalentClass,B&gt;</code><sup id="fnref:1"><a href="#fn:1" rel="footnote">1</a></sup> </td>
+<td> (Subsets of) all RDF syntaxes, Manchester Syntax, Functional Style Syntax.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>To summarize; words combined in a grammar form sentences that have semantics according to a set of <strong>inference rules</strong> (or <em>axioms</em>). OWL2 is a bit of a strange beast here, since it does not allow for all constructs that RDF and RDFS allow for to construct sentences.</p>
+
+<h4>Instances and Schemas</h4>
+
+<p>Every language serves to have some reference to the <strong>real world</strong>. In Linked Data land, these are called the "instances" or facts in a knowledge base ("individuals" in OWL-speak).</p>
+
+<p>As a rule of thumb: instances are those entities in a knowledge base that do not have an <code>rdf:type</code> relation to any of the terms in the vocabularies of RDF, RDFS or OWL2 (with the exception of <code>owl:NamedIndividual</code>).</p>
+
+<p>Sentences that only refer to <strong>terms</strong> are called <strong>schema</strong> information.</p>
+
+<ul>
+<li>An instance is said to be of a certain <strong>type</strong> if it has a <code>rdf:type</code> relation with an instance of <code>owl:Class</code> (or <code>rdfs:Class</code>) that represents that type. <strong>NB:</strong> Never use <code>rdfs:Class</code> but use <code>owl:Class</code> instead.</li>
+<li>That type is then called a <strong>class</strong> or <strong>concept</strong> (to be precise: the class represents a concept)</li>
+</ul>
+
+
+<hr/>
+
+
+<p><strong>Punning</strong> (word play) is needed when a resource is used both as <em>instance</em> and as <em>class</em>. This is allowed in RDF, RDFS and OWL2 Full, but not in OWL2 DL. However, because the context of use is known, OWL2 DL reasoners neatly distinguish the two cases, thus allowing for "punning".</p>
+
+<hr/>
+
+
+<h4>Vocabularies and Ontologies</h4>
+
+<p>Often mentioned in the same breath with RDF are terms such as SKOS, Dublin Core, PROV, FOAF and QUDT. These are so-called <strong>vocabularies</strong> or <strong>ontologies</strong>, and they can be specified by standards-bodies such as the W3C (SKOS, PROV) or the Dublin Core Metadata Initiative (Dublin Core), but they are often less grounded in institutions, such as QUDT (TopQuadrant and NASA) and more strongly FOAF. In the Linked Data cloud, the success (and reliability) of a vocabulary is measured by how widespread its use is.</p>
+
+<p>Vocabularies are reliably distinct from knowledge representation languages in that they only provide new <strong>vocabulary terms</strong> and do not introduce new inference rules, new syntaxes, or new semantics.</p>
+
+<p><em>"What!? No new semantics!?"</em></p>
+
+<p>Well... no <strong>new</strong> semantics, but similar to normal languages, the words we use, and the way we combine them do <strong>have</strong> semantics.</p>
+
+<p>The inference rules of the knowledge representation languages allow for two types of reasoning:</p>
+
+<ol>
+<li>Inferring new information between <strong>terms</strong> used in a set of sentences. This is also called T-Box (T for terminology) or schema inference, and serves to infer whether a knowledge base is <strong>internally consistent</strong> and makes <strong>explicit</strong> all implicit information in the knowledge base.</li>
+<li>Inferring new information about <strong>instances</strong> referred to in the knowledge base. This is also called A-Box (A for assertion) instance inference. Although instances also play a role in determining whether a knowledge base is consistent, the main purpose is usually to infer new <strong>relations</strong> amongst instances, most importantly <strong>sameness</strong> and <strong>type</strong> information. For the latter to work, an ontology needs to specify at least <em>domain</em> and <em>range</em> information for properties <strong>or</strong> define classes using <strong>necessary and sufficient conditions</strong> (using the <code>owl:equivalentClass</code> construct).</li>
+</ol>
+
+
+<p>The distinction between <strong>vocabularies</strong> and <strong>ontologies</strong> is that the latter typically contain <strong>more schema</strong> information, and therefore offer more means to infer new information: they are more <strong>expressive</strong>.</p>
+
+<h4>To confuse matters...</h4>
+
+<p>In the libary and cultural heritage communities, it is common to specify large, structured terminologies for annotation purposes. These terminologies are called <strong>knowledge organization systems</strong>. SKOS, the <strong>simple knowledge organization system</strong> is a Linked Data vocabulary that captures the most common relations one can find in such knowledge organization systems (broader, narrower, related) and between them (exact match, close match, etc.).</p>
+
+<p>The confusion is that these knowledge organization systems are often called <strong>vocabularies</strong> as well. They are distinctly different from the vocabularies we discussed before in that the terms they provide are <strong>instances</strong> and do not form part of the schema of the knowledge base. A SKOS knowledge base can thus be seen as a knowledge base about concepts, where, say a Vehicle knowledge base is usually about actual vehicles.<sup id="fnref:2"><a href="#fn:2" rel="footnote">2</a></sup></p>
+
+<p>Because a SKOS knowledge base thus has <em>knowledge</em> as its domain, it is essentially a `reification' of RDFS and OWL. Fortunately, SKOS is <em>not a language</em> and does not add new semantics that is incompatible with the Linked Data family.</p>
+
+<p>In the following we'll use the term <strong>thesaurus</strong> to refer to vocabularies of this type.</p>
+
+<h4>Other types of knowledge bases</h4>
+
+<p>Indeed, sometimes a knowledge base does not fall into either of these categories. For instance, a knwoledge base that uses its own set of terms to describe resources, but does not specify these terms explicitly in a schema (an ontology).</p>
+
+<p>When specifying mappings, this schema needs to be identified. It is therefore important to determine what parts of the data should be considered part of the schema, and what parts are 'data'. The relations used are typically schema entities.</p>
+
+<p>Furthermore, often datasets use some type of category system for the resources described in it. The mapping designer needs to decide whether it makes sense to define the categories as classes or as instances (SKOS concepts). Generally speaking, it is more straightforward to specify them as SKOS concepts.</p>
+
+<h3>SPARQL vs OWL</h3>
+
+<p>Although SPARQL is a <em>query</em> language, it can also be used to implement rather expressive rules (e.g. using <code>INSERT { ... } WHERE { ... }</code> via the SPARQL update protocol). Several rule-like languages have been implemented that use a SPARQL-like syntax. Examples are SPIN (TopQuadrant) and SPARQL Rules (Clark&amp;Parsia, which partially maps onto SWRL).</p>
+
+<p>To put SPARQL-as-rule-language in to context, it defines its own vocabulary, grammar, semantics and syntax that operates <em>on top of</em> the other members of the Linked Data family, but is not a part of it.</p>
+
+<p>The drawback is thus that the rules cannot be exchanged as easily amongst parties because they do not have URIs and cannot be exchanged as RDF graphs. Also, their semantics is incompatible with RDF, RDFS and OWL (closed world vs. open world). Most importantly: reasoning using SPARQL rules is <strong>order dependent</strong>: the rules have to fire in a specific order, often multiple times, to make sure all intended inferences are indeed reached.</p>
+
+<p>That said, it is often convenient to express simple rules used e.g. for combination, visualization or presentation purposes in SPARQL. Especially since it is much more expressive when it concerns data-type and data-value reasoning. Keep in mind that these rules remain application-specific and may cause unwanted and unintended side-effects when used in combination with other, external datasets. Also, consumers of your dataset will not be aware of the SPARQL rules, and thus have a less expressive dataset or knowledge base.</p>
+
+<h2>The CB-NL Ontology</h2>
+
+<p>CB-NL is an ontology specified in OWL: it focuses on explicit schema-level definitions of concepts.</p>
+
+<p>All concepts are represented as <strong>classes</strong> that restrict a fixed number of properties:</p>
+
+<ul>
+<li><code>cbnlcore:hasAppearance</code></li>
+<li><code>cbnlcore:hasApplication</code></li>
+<li><code>cbnlcore:hasFunction</code></li>
+<li><code>cbnlcore:hasTechnology</code></li>
+</ul>
+
+
+<p>However, CB-NL is not an expressive ontology:</p>
+
+<ul>
+<li>The range of these properties is not specified, i.e. the instances in the <em>object</em> position of properties are not automatically classified as having a certain type.</li>
+<li>The classes are <em>not</em> defined using <em>necessary and sufficient conditions</em>, i.e. class restrictions are not sufficiently expressive to automatically infer instances as belonging to a certain type.</li>
+</ul>
+
+
+<p>This means that an OWL reasoner will only infer potential new relations amongst classes.</p>
+
+<h2>Mapping Strategies</h2>
+
+<p>This section discusses a number of mapping strategies for mapping between ontologies and vocabularies of varying levels of expressiveness. For this we distinguish the following types of knowledge bases:</p>
+
+<ol>
+<li>Expressive <strong>ontologies</strong> that use necessary and sufficient conditions suitable for automatic type inferencing.</li>
+<li>Inexpressive ontologies (or <strong>vocabularies</strong>) that only specify subclass and/or subproperty relations</li>
+<li><strong>SKOS vocabularies</strong>, which only specify SKOS concepts and (hierarchical) relations amongst them.</li>
+</ol>
+
+
+<p>The main distinction between 1. and 2. on the one hand, and 3. on the other, is that the former serve to <strong>represent</strong> classes of records in your database (the instances, or individual data items), whereas the latter is only used to <strong>annotate</strong> these instances.</p>
+
+<p>The second distinction is that SKOS vocabularies typically use a fixed set of standard properties (relations from SKOS, DC or other common vocabularies), whereas the other two often use a mix of standard properties and custom ones (see CB-NL). This means that for the ontologies and vocabularies, properties will have to be mapped as well.</p>
+
+<p>Mappings can be expressed in two ways:</p>
+
+<ol type="a">
+<li>Mappings that use constructs (properties) that are part of one of the languages; these typically have the most far-reaching consequences qua semantics: inferences on the first ontology are transferred to the other ontology and vice versa. Examples are the use of <code>rdf:type</code>, <code>rdfs:subClassOf</code>, <code>owl:equivalentClass</code> and <code>rdfs:subPropertyOf</code>.</li>
+<li>Mappings that use constructs (properties) that are part of an ontology or vocabulary; these may or may not have consequences for semantics (no new inferences follow). An example is the use of <code>skos:exactMatch</code>. This category includes properties from the languages that do not have formal semantics, such as <code>rdfs:seeAlso</code>.</li>
+</ol>
+
+
+<p><strong>NB:</strong> Mappings are <strong>viral</strong> in that they are transitive across multiple mapped ontologies: if A is mapped onto B, and B is mapped onto C, then inferences from A hold for C as well.</p>
+
+<h5>Named Graphs</h5>
+
+<p>For this reason it is advisable to define mappings using a tool that tracks the provenance of mappings by capturing the mapping in a <em>Named Graph</em> that has associated information that expresses the mappings' provenance (authorship, reason for adding etc.). Named graphs can also be used to define contexts of combinations of ontologies. These contexts can then be considered separately from the rest of the RDF graph, allowing for context-dependent semantics. Note that this may cause unwanted side-effects when translating from an ontology/vocabulary to an ontology/vocabulary outside the context.</p>
+
+<h5>Requirements for Mapping</h5>
+
+<ul>
+<li>As many entities and concepts in both knowledge bases should be mapped</li>
+<li>Entities and concepts in both knowledge bases may be enriched by the mapping (new inferences follow), but not altered in a way that the knowledge base is misaligned or no longer consistent with respect to the original knowledge base</li>
+</ul>
+
+
+<h3>Ontologies to Ontologies</h3>
+
+<p>When mapping ontologies to eachother the goal is to make sure that the schema-information in both ontologies is integrated for concepts and relations that have the same intended meaning.</p>
+
+<p>Because we're dealing with expressive ontologies, the preferred way of mapping is to use mapping type <strong>a</strong>: use constructs from one of the knowledge representation languages.</p>
+
+<p>When specifying mappings it is good practice to consider classes as sets of potential instances. You can then draw Venn diagrams (circles represent sets) to determine how classes from the two ontologies overlap.</p>
+
+<p>In the, we consider two ontologies <code>a</code> and <code>b</code>:</p>
+
+<pre><code>a:X owl:equivalentClass [ rdf:type           owl:Restriction ;  
+                          owl:onProperty     a:p   ;  
+                          owl:someValuesFrom a:Y 
+                        ] .
+
+a:y rdf:type            a:Y .
+a:x a:p                 a:y . 
+</code></pre>
+
+<p>A reasoner will infer that <code>&lt;a:x,rdf:type,a:X&gt;</code>, and that <code>&lt;a:X,rdf:type,owl:Class&gt;</code>, <code>&lt;a:X,rdfs:subClassOf,owl:Thing&gt;</code> and <code>&lt;a:p,rdf:type,rdf:Property&gt;</code>.</p>
+
+<p>And:</p>
+
+<pre><code>b:X rdf:type            owl:Class . 
+</code></pre>
+
+<p>A reasoner will infer that <code>&lt;b:X,rdf:type,owl:Class&gt;</code> and <code>&lt;b:X,rdfs:subClassOf,owl:Thing&gt;</code>.</p>
+
+<h4>Classes</h4>
+
+<h5>Situation 1</h5>
+
+<p>If <code>a:X</code> and <code>b:X</code> are intensionally exactly the same; all members of class <code>a:X</code> are also members of <code>b:X</code>; all inferences that hold for <code>a:X</code> should hold for <code>b:X</code> as well.</p>
+
+<p>The preffered way of specifying a mapping is using:</p>
+
+<pre><code>a:X owl:equivalentClass b:X .
+</code></pre>
+
+<p>The reasoner will then infer (in addition to the inferences above):</p>
+
+<pre><code>b:X owl:equivalentClass a:X .
+b:X owl:equivalentClass [ rdf:type           owl:Restriction ;  
+                          owl:onProperty     a:p   ;  
+                          owl:someValuesFrom a:Y 
+                        ] .
+
+a:x rdf:type            b:X .
+</code></pre>
+
+<h5>Situation 2</h5>
+
+<p>The classes overlap, but some instances of class <code>b:X</code> do not belong to <code>a:X</code>, but all instances of class <code>a:X</code> do not belong to <code>b:X</code>.</p>
+
+<p>The preferred way of specifying a mapping is using:</p>
+
+<pre><code>a:X owl:subClassOf  b:X .
+</code></pre>
+
+<p>The reasoner will then infer (in addition to the inference above):</p>
+
+<pre><code>a:x rdf:type            b:X .
+</code></pre>
+
+<h5>Situation 3</h5>
+
+<p>The classes overlap, but some instances of class <code>a:X</code> do not belong to <code>b:X</code>, but all instances of class <code>b:X</code> do not belong to <code>a:X</code>.</p>
+
+<p>The preferred way of specifying a mapping is using:</p>
+
+<pre><code>b:X owl:subClassOf  a:X .
+</code></pre>
+
+<p>The reasoner will then infer (in addition to the inference above):</p>
+
+<pre><code>b:X rdfs:subClassOf     a:X .
+b:X rdfs:subClassOf     [ rdf:type           owl:Restriction ;  
+                          owl:onProperty     a:p   ;  
+                          owl:someValuesFrom a:Y 
+                        ] .
+</code></pre>
+
+<p>Note that the reasoner does not infer that <code>a:x</code> is an instance of class <code>b:X</code> because it may lie outside the part of <code>a:X</code> that is covered by <code>b:X</code>.</p>
+
+<h5>Situation 4</h5>
+
+<p>The classes overlap, but some instances of class <code>a:X</code> do not belong to <code>b:X</code>, and some instances of class <code>b:X</code> do not belong to <code>a:X</code>.</p>
+
+<p>One cannot specify a direct mapping between the classes, but needs to for instance to:</p>
+
+<ul>
+<li>Make explicit <strong>how</strong> they overlap, e.g. by introducing a new property whose value distinguishes members of class <code>b:X</code> from <code>a:X</code>: <code>b:X</code> is the union of a part of class <code>a:X</code> and those individuals that have some value from <code>b:Y</code> for property <code>b:p</code>. Of course this is the most <strong>powerful</strong> way of integrating two ontologies.</li>
+</ul>
+
+
+<pre><code>b:X owl:subClassOf  [ owl:unionOf (
+                        a:X ,
+                        [ rdf:type           owl:Restriction ;
+                          owl:onProperty     b:p ;
+                          owl:someValuesFrom b:Y
+                        ]
+                      )
+                    ] .
+</code></pre>
+
+<ul>
+<li>Introduce new classes that form the union and intersection of both classes:</li>
+</ul>
+
+
+<pre><code>m:Xa_or_b   owl:equivalentClass [ owl:unionOf (a:X, b:X) ] .
+m:Xa_and_b  owl:equivalentClass [ owl:intersectionOf (a:X, b:X) ] .
+</code></pre>
+
+<ul>
+<li>Merely state that <code>a:X</code> and <code>b:X</code> have a common super class:</li>
+</ul>
+
+
+<pre><code>a:X owl:subClassOf  m:X .
+b:X owl:subClassOf  m:X .
+</code></pre>
+
+<p>In the first case, the reasoner will infer merely that <code>b:X</code> is a subclass of <code>a:X</code>.</p>
+
+<p>In the second case, the reasoner will infer that <code>a:x</code> is of type <code>m:Xa_or_b</code>, but not necessarily of <code>m:Xa_and_b</code>, because <code>a:x</code> may lie outside the part of <code>a:X</code> that is covered by <code>b:X</code>.</p>
+
+<p>In the third case, the reasoner will infer that <code>a:x</code> is of type <code>m:X</code>, but does not infer anything else.</p>
+
+<h5>Situation 5</h5>
+
+<p>The classes do not overlap, but still belong together somehow. This is best represented using a common super class, as above:</p>
+
+<pre><code>a:X owl:subClassOf  m:X .
+b:X owl:subClassOf  m:X .
+</code></pre>
+
+<p>The reasoner will infer that <code>a:x</code> is of type <code>m:X</code>, but does not infer anything else.</p>
+
+<h4>Properties</h4>
+
+<p>Suppose now that <code>b:X</code> is defined much more similar to <code>a:X</code> (i.e. it also has an equivalent class restriction on a property <code>b:p</code>), and that <code>b:Y</code> and <code>a:Y</code> are equivalent. It is often the case that classes from different ontologies are defined using similar properties:</p>
+
+<pre><code>b:X owl:equivalentClass [ rdf:type           owl:Restriction ;  
+                          owl:onProperty     b:p   ;  
+                          owl:someValuesFrom b:Y 
+                        ] .
+
+b:Y owl:equivalentClass a:Y .
+</code></pre>
+
+<p>Properties can be mapped in the following ways:</p>
+
+<h5>Situation 6</h5>
+
+<p>If all entities related via <code>a:p</code> should also be related via <code>b:p</code> and vice versa, then the properties are equivalent:</p>
+
+<pre><code>a:p owl:equivalentProperty b:p .
+</code></pre>
+
+<p>This will make the reasoner infer that not only the properties are equivalent, but also the classes, since the restrictions have become equivalent.</p>
+
+<h5>Situation 7</h5>
+
+<p>If some entities related via <code>a:p</code> should also be related via <code>b:p</code> but not vice versa, <code>a:p</code> is a subproperty of <code>b:p</code>:</p>
+
+<pre><code>a:p rdfs:subPropertyOf b:p .
+</code></pre>
+
+<p>This will make the reasoner infer that <code>a:X</code> is a subclass of <code>b:X</code>, since every member of class <code>a:X</code> will have a <code>a:p</code> relation with som <code>a:Y</code>, and because of our mapping, a <code>b:p</code> relation as well, which will make that it will also become a member of <code>b:X</code>.</p>
+
+<p>Likewise if the inverse mapping is specified.</p>
+
+<h5>Situation 8</h5>
+
+<p>If no entities related via <code>a:p</code> are ever related via <code>b:p</code> as well, the properties are disjoint.</p>
+
+<pre><code>a:p owl:disjointProperty b:p .
+</code></pre>
+
+<p>Counter intuitive, perhaps, but this has no consequence for the relation between <code>a:X</code> and <code>b:X</code>. Although both specify that there should be a relation with a <code>b:Y</code>/<code>a:Y</code> instance, the restrictions do not specify exactly <em>which</em> individual: the property mappings only hold for individual pairs of instances, not for the class definitions.</p>
+
+<h5>Situation 9</h5>
+
+<p>In a situation where the domain and range of a property are specified, e.g.:</p>
+
+<pre><code>a:p rdfs:domain a:X ;
+    rdfs:range  a:Y .
+</code></pre>
+
+<p>and suppose that we do not specify that <code>b:Y owl:equivalentClass a:Y</code> .</p>
+
+<p>The mappings listed above will have the following effect:</p>
+
+<ul>
+<li>A mapping using <code>owl:equivalentProperty</code> will make <code>b:X</code> a subclass of <code>a:X</code> (since at least some members of <code>b:X</code> must be in <code>a:X</code>, given the definition of <code>b:X</code>)</li>
+<li>A mapping using <code>a:p rdfs:subPropertyOf b:p</code> will make <code>b:X</code> a superclass of <code>a:X</code></li>
+<li>A mapping using <code>b:p rdfs:subPropertyOf a:p</code> will make <code>b:X</code> a subclass of <code>a:X</code></li>
+<li>A mapping using <code>a:p owl:disjointProperty b:p</code> will not have any consequences.</li>
+</ul>
+
+
+<h5>Situation 10</h5>
+
+<p>In some cases, ontology <strong>a</strong> represents a term as a property, while ontology <strong>b</strong> represents it as a class. A common case where this happens is with so-called <em>roles</em>, such as `employee', which have a relational nature (you are always an employee of an organisation).</p>
+
+<p>This situation is likely to occur in the case of CB-NL because of the design decision to represent all properties and attributes as classes.</p>
+
+<p>Consider the following ontology <strong>a</strong>:</p>
+
+<pre><code>a:X owl:equivalentClass [ rdf:type           owl:Restriction ;  
+                          owl:onProperty     a:p   ;  
+                          owl:someValuesFrom a:Y 
+                        ] .
+
+a:y rdf:type            a:Y .
+a:x a:p                 a:y . 
+</code></pre>
+
+<p>which is the one from situation #1. And ontology <strong>b</strong>:</p>
+
+<pre><code>b:P rdf:type            owl:Class .
+
+b:x b:has_property      b:p .
+
+b:p rdf:type            b:P ;
+    b:has_value         b:y .
+</code></pre>
+
+<p>Note that because <code>b:P</code> is a property class, we have specific instances for every occurrence of the relation "p": the relation is reified.</p>
+
+<ol>
+<li><p>The first option is mapping through <strong>punning</strong>: we can simply specify that <code>a:p</code> and <code>b:P</code> are equivalent classes or properties. However, the two contexts will be interpreted separately by reasoners, meaning that the equivalent class <code>a:p</code> is treated differently from the property <code>a:p</code>.</p></li>
+<li><p>The second option is to take the stance that the value of the property <code>a:p</code> (in this case <code>a:y</code>) is an instance of the property class (<code>b:P</code>), rather than that the instance of the property class is a representation of the occurrence of the property. In that case, one could define a mapping by means of a range restriction: <code>&lt;a:p,rdfs:range,b:P&gt;</code>. I would advise against this approach because it confounds two ontological categories: properties and their values.</p></li>
+<li><p>The third option is to define a <strong>role-inclusion axiom</strong>, or property chain, that can infer the existence of an <code>a:p</code> relation, given the existence of the reified <code>b:p</code> relation instance. Unfortunately this does not work the other way around because of restrictions in the OWL2 semantics.</p></li>
+</ol>
+
+
+<p>A role chain is a sequence of relations between instances; given a match with such a chain, the reasoner will infer the exisence of a relation between the instances at both ends of the chain.</p>
+
+<p>For the trick to work, we need to ensure that the instance of <code>b:P</code> is identifyable as such in the role chain. This is done by means of a <strong>self restriction</strong>: every instance of the <code>b:P</code> class is related to itself via the <code>b:is_P</code> property.</p>
+
+<pre><code>b:P owl:equivalentClass [ rdf:type          owl:Restriction ;
+                          owl:onProperty    b:is_P ;
+                          owl:hasSelf       "true"^^xds:boolean 
+                        ] .
+</code></pre>
+
+<p>Given the ontologies above, the reasoner will now infer that <code>&lt;b:p,b:is_P,b:p&gt;</code>.</p>
+
+<p>We then define the role inclusion axiom:</p>
+
+<pre><code>a:p owl:propertyChainAxiom ( b:has_property b:is_P b:has_value ) .
+</code></pre>
+
+<p>which states that anything that 'has property' something that is an instance of <code>b:P</code> which <code>has value</code> some value, is related to that value via the <code>a:p</code> relation.</p>
+
+<p>Given our knowledge base:</p>
+
+<pre><code>b:x b:has_property      b:p .
+
+b:p b:is_P              b:p .
+    b:has_value         b:y .
+</code></pre>
+
+<p>we can then infer that:</p>
+
+<pre><code>b:x a:p                 b:y .
+</code></pre>
+
+<h3>Vocabularies to Ontologies</h3>
+
+<p>Vocabularies, lightweight ontologies, can be mapped to ontologies in much the same way as illustrated in the section above. However, the mappings are generally much simpler since vocabularies typically do not use equivalent class restrictions.</p>
+
+<p>The preferred way of mapping is thus to use mapping type <strong>a</strong>: use constructs from one of the knowledge representation languages.</p>
+
+<p>The reason is that even though the class definitions are usually not strong enough to infer class-membership for instances, the instances may still be explicitly typed as belonging to one or more classes.</p>
+
+<p>Note that vocabularies often <strong>do</strong> specify domain and range for properties. As discussed above, domain and range can easily propagate unexpected inferences. This means that one should be extra careful when dealing with them.</p>
+
+<h3>SKOS Thesauri to Vocabularies or Ontologies</h3>
+
+<p>SKOS thesauri only operate at the A-Box level: they only contain instances of <code>skos:Concept</code> and <code>skos:ConceptScheme</code>. However, because SKOS itself <em>is</em> a lightweight ontology, mapping SKOS thesauri to one of the other types of ontology using constructs from one of the languages (mapping type <strong>a</strong>) may have consequences. Often the mapping type of choice is therefore <strong>b</strong>, where mappings are specified using the SKOS vocabulary itself.</p>
+
+<p>The SKOS mapping relations are the following:</p>
+
+<ul>
+<li><code>skos:exactMatch</code> when the intended meaning of the concepts is the same</li>
+<li><code>skos:closeMatch</code> when the two concepts are almost the same</li>
+<li><code>skos:broadMatch</code> when the subject is narrower than the object concept</li>
+<li><code>skos:narrowMatch</code> when the subject is broader than the object concept</li>
+<li><code>skos:relatedMatch</code> when the two concepts are semantically related</li>
+</ul>
+
+
+<p>These mapping relations are intended to hold between concepts in <strong>different</strong> <code>skos:ConceptScheme</code>s.</p>
+
+<h5>Situation 11</h5>
+
+<p>An interesting way of mapping thesauri to ontologies is by pretending that the <code>skos:Concept</code> instances are classes, and vice versa, that the classes in the ontology are instances (through <strong>punning</strong>). One can then use both <code>owl:equivalentClass</code> and <code>rdfs:subClassOf</code> relations, and the SKOS mapping relations (in this case <code>skos:exactMatch</code> and <code>skos:broadMatch</code>) to specify the mappings between the two knowledge bases.</p>
+
+<p>The advantage is that from both perspectives (SKOS and RDFS/OWL) the mappings will be valid: the SKOS thesaurus will look like an extremely lightweight ontology, while the ontology will appear to be an under-specified SKOS thesaurus.</p>
+
+<p>The only problem is that there is no mechanical means to check consistency of the combined knowledge bases. Even though SKOS concepts and relations do not really carry much semantics, they do have an intended meaning that should correspond with the mapped ontology.</p>
+
+<p><strong>NOTE</strong> An ugly hack, that takes us outside the OWL2 semantics (and the intended semantics for SKOS) would be to specify <code>skos:broadMatch</code> and <code>skos:broader</code> as equivalent property of <code>rdfs:subClassOf</code>, and <code>skos:exactMatch</code> as equivalent to <code>owl:equivalentClass</code>. Don't try this at home!</p>
+
+<h5>Situation 12</h5>
+
+<p>A more puristic approach is to consider that the purpose of the SKOS thesaurus is to annotate resources: SKOS concepts form part of a description, rather than a definition of a resource.</p>
+
+<p>Suppose we have a corpus of resources annotated using a known annotation property, such as <code>dcterms:subject</code>, we can then determine the class of the annotated resources by introducing value restrictions from thesaurus <code>a</code> on this property for classes in the ontology <code>b</code>:</p>
+
+<pre><code>_:res   dcterms:subject     a:concept1, a:concept2 .
+
+b:X     owl:equivalentClass [ rdf:type          owl:Restriction ;
+                              owl:onProperty    dcterms:subject ;
+                              owl:hasValue      a:concept1 
+                            ] .
+</code></pre>
+
+<p>This way, any resource annotated using <code>a:concept1</code> will be inferred as being of type <code>b:X</code>.
+Of course, these mappings can become much more complicated, by e.g. requiring the co-occurrence of two annotations, or by leveraging additional relations that may exist amongst individual resources. For instance, a resource annotated with <code>dcterms:subject a:stick</code> with a <code>a:held_by</code> relation with a resource annotated with <code>dcterms:subject a:hooligan</code> could be classified as <code>b:Weapon</code>.</p>
+
+<p>A drawback of this approach is that the mappings only 'fire' when not only the schema, but the data is asserted in the knowledge base as well. This can be unrealistic for some scenarios with a lot of data; but often having only the data-item under consideration in the KB suffices.</p>
+
+<h3>SKOS Thesauri to SKOS Thesauri</h3>
+
+<p>In general, this is considered the simplest form of mapping.</p>
+
+<p>To reiterate, the SKOS mapping relations are the following:</p>
+
+<ul>
+<li><code>skos:exactMatch</code> when the intended meaning of the concepts is the same</li>
+<li><code>skos:closeMatch</code> when the two concepts are almost the same</li>
+<li><code>skos:broadMatch</code> when the subject is narrower than the object concept</li>
+<li><code>skos:narrowMatch</code> when the subject is broader than the object concept</li>
+<li><code>skos:relatedMatch</code> when the two concepts are semantically related</li>
+</ul>
+
+
+<p>These mapping relations are intended to hold between concepts in <strong>different</strong> <code>skos:ConceptScheme</code>s.</p>
+
+<p>The advised mapping type is <strong>b</strong>, using terms from the SKOS ontology.</p>
+
+<h5>Situation 13</h5>
+
+<p>Simply using the SKOS relation often suffices if the task that is intended to be supported by the mappings one that is similar to browsing or searching. Simple SPARQL queries can be used to find related resources annotated using the other thesaurus.</p>
+
+<p>The drawback is that these SPARQL queries do not form part of the knowledge base. However, since SKOS is widely used, the queries are not likely to differ very much from one application to another, giving little room for alternative interpretations.</p>
+
+<h5>Situation 14</h5>
+
+<p>Another approach is to use the RDFS/OWL reasoning machinery to specify that two SKOS concepts are the same. The <code>owl:sameAs</code> relation comes to mind, and can indeed be used to make two concepts formally identical.</p>
+
+<p>The drawback of this approach is that <em>everything</em> said about one concept will now also be said about the other (including authorship, what scheme it belongs to etc.). To make matters worse, this is works <em>transitively</em>, propagating the identicity through all mapped thesauri and ontologies.</p>
+
+<p>SKOS mappings were explicitly defined to circumvent these drawbacks: situation #13 is indeed the most unfortunate one.</p>
+
+<h5>Situation 15</h5>
+
+<p>Finally, one could use the same approach as iterated for situation #11: map SKOS thesauri by reference to the resources they are annotated with.</p>
+
+<p>For instance:</p>
+
+<pre><code>a:res   dcterms:subject     a:concept1, a:concept2 .
+b:res   dcterms:subject     b:concept1, b:concept2 .
+
+m:C1    owl:equivalentClass [ rdf:type          owl:Restriction ;
+                              owl:onProperty    dcterms:subject ;
+                              owl:hasValue      a:concept1 
+                            ] ;
+        owl:equivalentClass [ rdf:type          owl:Restriction ;
+                              owl:onProperty    dcterms:subject ;
+                              owl:hasValue      b:concept1 
+                            ] .
+</code></pre>
+
+<p>This specifies that any resource annotated with <code>a:concept1</code> is a member of class <code>m:C1</code>, and is therefore also annotated with <code>b:concept1</code>.</p>
+
+<p>This could be considered "a bit much" were it not for the fact that SKOS concepts often do not map directly onto each other. Sometimes a mapping is <em>1:n</em> or even <em>n:m</em>, rendering the standard SKOS mapping relations less ideal.</p>
+
+<p>This approach is also a good way to refine the <code>skos:closeMatch</code> relation.</p>
+
+<p>A drawback of this approach is that the mappings only 'fire' when not only the schema, but the data is asserted in the knowledge base as well. This can be unrealistic for some scenarios with a lot of data; but often having only the data-item under consideration in the KB suffices.</p>
+
+<h2>Discussion</h2>
+
+<p>This document briefly introduces the concepts underlying the languages RDF, RDFS and OWL2, and the SKOS vocabulary. It distinguishes between expressive ontologies, vocabularies and thesauri.</p>
+
+<p>We then discuss 15 situations where alternative approaches could be used to specify the mappings. For each of these, we tried to list the drawbacks.</p>
+
+<p>This is a <strong>working document</strong>. Please send comments, remarks, requests for additions to Rinke Hoekstra <a href="&#109;&#97;&#x69;&#x6c;&#x74;&#x6f;&#58;&#x72;&#105;&#x6e;&#107;&#x65;&#x2e;&#x68;&#111;&#x65;&#107;&#x73;&#116;&#x72;&#x61;&#64;&#x76;&#117;&#x2e;&#110;&#x6c;">&#x72;&#105;&#x6e;&#x6b;&#101;&#46;&#104;&#x6f;&#x65;&#x6b;&#115;&#116;&#x72;&#x61;&#x40;&#118;&#117;&#46;&#x6e;&#108;</a>. We'll try to accomodate them.</p>
+<div class="footnotes">
+<hr/>
+<ol>
+<li id="fn:1">
+<p>I will use the terms &ldquo;Linked Data&rdquo; and &ldquo;Semantic Web&rdquo; as equivalent. Both have the same origin, but take slightly different perspectives on the same thing: &ldquo;Semantic Web&rdquo; is an earlier term from the &lsquo;90s that emphasizes semantics and reuse of schema information, while Linked Data emphasizes the reuse of data item identifiers.<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:1">
+<p>But not vice versa!<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:1">
+<p>The semantics of OWL2 DL is defined against the Structural Specification, not RDF Graphs, this is because the OWL2 Direct Semantics relies on restrictions on the allowed combinations of &ldquo;words&rdquo; in RDF. The OWL2 Full Semantics <em>is</em> expressed against a graph since it does not have these restrictions.<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:1">
+<p><strong>and</strong> vice versa!<a href="#fnref:1" rev="footnote">&#8617;</a></p></li>
+<li id="fn:2">
+<p>Of course this is not particular to SKOS. <a href="#fnref:2" rev="footnote">&#8617;</a></p></li>
+</ol>
+</div>
+
+</body>
+</html>
