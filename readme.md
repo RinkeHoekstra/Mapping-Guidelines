@@ -1,7 +1,7 @@
 # Mapping Guidelines for CB-NL
 ***Rinke Hoekstra***  
 January 2015  
-**STATUS**: Working Draft, comments to <rinke.hoekstra@vu.nl>
+**STATUS**: Working Draft, comments to <rinke.hoekstra@vu.nl>  
 **License**: Creative Commons Attribution 3.0 (CC BY 3.0)
 
 
